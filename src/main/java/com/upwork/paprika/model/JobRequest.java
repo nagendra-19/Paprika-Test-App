@@ -1,6 +1,5 @@
 package com.upwork.paprika.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -16,6 +15,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobRequest {
+
+    @JsonProperty(value = "JO_MN")
+    private String JO_MN;
     @JsonProperty(value = "JO_JOB_KEY")
     private String JO_JOB_KEY;
     @JsonProperty(value = "JO_JOB_TITLE")

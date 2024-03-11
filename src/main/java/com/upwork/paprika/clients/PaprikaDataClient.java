@@ -25,6 +25,6 @@ public interface PaprikaDataClient {
     ClientResponse saveJob(@RequestBody JobRequest job);
 
     @RequestMapping(method = RequestMethod.POST, value = "jobs/updateJob")
-    ClientResponse updateJob(@RequestBody JobResponse job);
+    ClientResponse updateJob(@RequestBody JobRequest job);
 
 }

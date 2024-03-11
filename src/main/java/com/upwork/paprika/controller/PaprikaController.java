@@ -31,13 +31,12 @@ public class PaprikaController {
         return paprikaDataClient.getSystemCodes();
     }
 
-    @PostMapping("/saveJob")
+    @PostMapping("/saveOrUpdateJob")
     public ClientResponse saveJob(@RequestBody JobRequest job) {
-        return paprikaDataClient.saveJob(job);
-    }
-
-    @PostMapping("/updateJob")
-    public ClientResponse updateJob(@RequestBody JobResponse job) {
-        return paprikaDataClient.updateJob(job);
+        if (job.getJO_MN() != null) {
+            return paprikaDataClient.updateJob(job);
+        } else{
+            return paprikaDataClient.saveJob(job);
+        }
     }
 }

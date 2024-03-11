@@ -15,7 +15,6 @@ export class JobAPI {
 		 await fetch('http://localhost:8080/getSystemCodes')
          .then(response=>response.json())
          .then(data=> {
-            console.log(data);
             systemCodes = data?.result;
             });
         return systemCodes;
@@ -31,9 +30,7 @@ export class JobAPI {
 
 	static async putJob(jobJson){
 	var res = {};
-	console.log(jobJson);
-
-	await fetch('http://localhost:8080/saveJob', {
+	await fetch('http://localhost:8080/saveOrUpdateJob', {
       method: "POST",
       body: JSON.stringify(jobJson),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -48,4 +45,5 @@ export class JobAPI {
 	static async patchJob(id, jobJson){
 
 	}
+
 }

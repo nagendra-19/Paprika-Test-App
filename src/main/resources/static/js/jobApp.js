@@ -1,12 +1,15 @@
 import {JobAPI} from "./jobAPI.js";
 
 export class JobApp {
-	static async newJob(){
+	static async newOrUpdateJob(id){
 	    var newJob = {};
+	    if (id != null) {
+	        newJob['JO_MN'] = id;
+	    }
         Array.from(document.querySelectorAll('[data-ref]'))
         				.forEach((element) => {
         					if (element.dataset.ref.match('JO_DATE') && element.value != '') {
-        					    newJob[element.dataset.ref] = moment(element.value).format(moment.defaultFormatUtc);
+        					    newJob[element.dataset.ref] = moment(element.value).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
         					} else if (element.dataset.ref == ('JO_SA_MN')
         					    || element.dataset.ref == ('JO_PROBABILITY')
         					    || element.dataset.ref.match('JO_NUMBER')
@@ -69,20 +72,20 @@ export class JobApp {
 			Array.from(document.querySelectorAll('[data-ref]'))
 				.filter((element) => (element.dataset.ref in job))
 				.forEach((element) => {
-				    if (element.dataset.ref.match('JO_DATE')) {
-				        console.log(job[element.dataset.ref]);
+				    if (element.dataset.ref.match('JO_DATE') && element.value != '' && element.value != undefined) {
                         element.value = moment(new Date(job[element.dataset.ref])).format('YYYY-MM-DD');
-                        console.log('full date: '+ element.value);
 				    } else {
 					    element.value = job[element.dataset.ref];
 				    }
-					console.log("ref: "+ element.dataset.ref);
-					console.log("value: "+ element.value);
 				});
-
-
 		} catch(e) {
 			alert(e.message);
 		}
 	}
+
+	static clearJob(){
+	    if(!document.location.href.endsWith('index.html')){
+            window.location.href = '/index.html'
+	    }
+    }
 }
