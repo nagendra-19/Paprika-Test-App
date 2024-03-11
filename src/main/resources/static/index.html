@@ -10,7 +10,7 @@
         if(url.searchParams.has('id')){
             JobApp.loadJob(url.searchParams.get('id'));
         } else {
-            JobApp.clearJob();
+            JobApp.loadDefaults();
         }
 
      window.saveJob=()=>{
