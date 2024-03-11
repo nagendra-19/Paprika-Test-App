@@ -5,6 +5,6 @@ Check out the repo..
 
 do maven clean install
 
-start the PaprikaDeveloperTestApplication.java
+Run the class PaprikaDeveloperTestApplication.java
 
 open this url from browser http://localhost:8080/index.html and try the features
