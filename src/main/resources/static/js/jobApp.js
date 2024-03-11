@@ -4,7 +4,7 @@ export class JobApp {
 	static async newOrUpdateJob(id){
 	    var newJob = {};
 	    if (id != null) {
-	        newJob['JO_MN'] = id;
+	        newJob['JO_MN'] = Number(id);
 	    }
         Array.from(document.querySelectorAll('[data-ref]'))
         				.forEach((element) => {
