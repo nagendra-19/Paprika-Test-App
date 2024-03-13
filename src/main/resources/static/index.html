@@ -7,8 +7,9 @@
 
         const url = new URL(document.location.href);
 
-        if(url.searchParams.has('id')){
-            JobApp.loadJob(url.searchParams.get('id'));
+        if(url.searchParams.has('id') || document.getElementById('JO_MN').value != ''){
+            var id = url.searchParams.has('id') ? url.searchParams.get('id') : document.getElementById('JO_MN').value
+            JobApp.loadJob(id);
         } else {
             JobApp.loadDefaults();
         }
@@ -32,6 +33,7 @@
 </head>
 <body>
 <section class="vertical-form">
+    <input id="JO_MN" type="text" data-ref="JO_MN" hidden="hidden"/>
     <fieldset>
         <label>JO_JOB_KEY</label>
         <input type="text" data-ref="JO_JOB_KEY"/>

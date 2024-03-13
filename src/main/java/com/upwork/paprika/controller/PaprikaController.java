@@ -33,10 +33,10 @@ public class PaprikaController {
 
     @PostMapping("/saveOrUpdateJob")
     public ClientResponse saveJob(@RequestBody JobRequest job) {
-        if (job.getJO_MN() != null) {
-            return paprikaDataClient.updateJob(job);
-        } else{
+        if (!(job.getJO_MN() == null || "".equalsIgnoreCase(job.getJO_MN()))) {
             return paprikaDataClient.saveJob(job);
+        } else {
+            return paprikaDataClient.updateJob(job);
         }
     }
 }

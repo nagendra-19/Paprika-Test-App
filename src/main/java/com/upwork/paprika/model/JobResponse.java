@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class JobResponse {
+    @JsonProperty(value = "JO_MN")
+    private String JO_MN;
     @JsonProperty(value = "JO_JOB_KEY")
     private String JO_JOB_KEY;
     @JsonProperty(value = "JO_JOB_TITLE")

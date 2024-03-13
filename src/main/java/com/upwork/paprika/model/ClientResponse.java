@@ -14,4 +14,7 @@ public class ClientResponse {
     private boolean status;
     private String message;
     private ResultObject result;
+    private String console;
+    private String error;
+    private String table;
 }

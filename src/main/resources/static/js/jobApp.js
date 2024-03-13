@@ -6,6 +6,7 @@ export class JobApp {
 	    if (id != null) {
 	        newJob['JO_MN'] = Number(id);
 	    }
+
         Array.from(document.querySelectorAll('[data-ref]'))
         				.forEach((element) => {
         					if (element.dataset.ref.match('JO_DATE') && element.value != '') {
@@ -24,7 +25,8 @@ export class JobApp {
         					    newJob[element.dataset.ref] = element.value;
         					}
         				});
-        JobAPI.putJob(newJob);
+        await JobAPI.putJob(newJob);
+        document.getElementById('JO_MN').value = id;
 	}
 
 	static async loadDefaults() {
